@@ -1,14 +1,13 @@
 const express=require('express');
+const bodyParser=require('body-parser');
 const router=express.Router();
 
 
 var app=express();
 
-// app.use('/',function(req,res){
-//     res.send('Hello World');
-// });
-
+app.use(bodyParser.json());
 app.use(router);
+
 router.get('/',function(req,res){
     res.send('Hello World');
 });
@@ -18,11 +17,17 @@ router.post('/',function(req,res){
 });
 
 router.get('/message',function(req,res){
-    res.send('Lista de mensaje');
+    res.send('Lista de mensajes');
 });
 
 router.post('/message',function(req,res){
     res.send('Mensaje añadido');
+});
+
+router.delete('/message',function(req,res){
+    console.log(req.body);
+    console.log(req.query);
+    res.send('Hello World');
 });
 
 app.listen(3000,function(){
