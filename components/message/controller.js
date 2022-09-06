@@ -28,4 +28,17 @@ function updateMessage(id,message){
     });
 }
 
-module.exports = {addMessage, getMessages,updateMessage};
+function deleteMessage(id){
+    return new Promise(async (resolve, reject)=> {
+        if(!id){
+            reject('El id es obligatorio');
+        }
+        store.deleteMessage(id)
+        .then(()=>{
+            resolve();
+        })
+        .catch(err=>{ reject(err)});
+    });
+}
+
+module.exports = {addMessage, getMessages,updateMessage,deleteMessage};

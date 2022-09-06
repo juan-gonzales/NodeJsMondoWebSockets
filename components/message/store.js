@@ -28,8 +28,12 @@ async function updateText(id,message){
     return newMessage;
 }
 
+function deleteMessage(id){
+    return Model.deleteOne({_id:id});
+}
 module.exports = {
     add: addMessage, 
     list: getMessages,
     updateText:updateText,
+    deleteMessage:deleteMessage,
 };
