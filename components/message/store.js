@@ -7,12 +7,19 @@ function addMessage(message) {
 };
 
 async function getMessages(filterUser) {
-    let filter={};
-    if(filterUser) {
-        filter={user:filterUser};
-    }
-    const messages=await Model.find(filter);
-    return messages;
+    return new Promise((resolve,reject)=>{
+        let filter={};
+        if(filterUser) {
+            filter={user:filterUser};
+        }
+        const messages= Model.find(filter)
+        .populate('user')
+        .catch(err=>{
+            reject(err);
+        });
+        resolve(messages);
+    })
+    
 };
 
 async function updateText(id,message){
