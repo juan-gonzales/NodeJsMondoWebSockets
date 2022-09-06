@@ -1,11 +1,5 @@
-const db=require('mongoose');
-const Model=require('./model');
 
-db.promise = global.promise;
-db.connect('mongodb+srv://admin:jR7zD1znOPjRDDyy@cluster0.vsaka.mongodb.net/node?retryWrites=true&w=majority',{
-    useNewUrlParser:true,
-});
-console.log('db conectada');
+const Model=require('./model');
 
 function addMessage(message) {
     const myMessage=new Model(message);

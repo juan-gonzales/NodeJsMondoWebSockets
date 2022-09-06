@@ -1,8 +1,9 @@
 const express=require('express');
 const bodyParser=require('body-parser');
 
+const db=require('./db');
 const router=require('./network/routes');
-
+db('mongodb+srv://admin:jR7zD1znOPjRDDyy@cluster0.vsaka.mongodb.net/node?retryWrites=true&w=majority');
 
 var app=express();
 
