@@ -33,6 +33,8 @@ router.delete('/message',function(req,res){
     res.status(201).send({message:'Mensaje eliminado'});
 });
 
+app.use('/app',express.static('public'));
+
 app.listen(3000,function(){
     console.log('Server started at port 3000');
 });
