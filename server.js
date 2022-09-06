@@ -1,6 +1,7 @@
 const express=require('express');
 const bodyParser=require('body-parser');
 const router=express.Router();
+const response=require('./network/response');
 
 
 var app=express();
@@ -13,23 +14,23 @@ router.get('/',function(req,res){
 });
 
 router.post('/',function(req,res){
-    res.send('Hello World');
+    res.status(201).send({error:false,message:'Successfully created'});
 });
 
 router.get('/message',function(req,res){
     console.log(req.headers);
     res.header({customHeader:'valor personalizado'});
-    res.send('Lista de mensajes');
+    response.success(req,res,'Lista de mensajes',200);
 });
 
 router.post('/message',function(req,res){
-    res.send('Mensaje añadido');
+    res.status(201).send({error:false,message:'Successfully created'});
 });
 
 router.delete('/message',function(req,res){
     console.log(req.body);
     console.log(req.query);
-    res.send('Hello World');
+    res.status(201).send({message:'Mensaje eliminado'});
 });
 
 app.listen(3000,function(){
