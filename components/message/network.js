@@ -31,4 +31,13 @@ router.delete('/',function(req,res){
     res.status(201).send({message:'Mensaje eliminado'});
 });
 
+router.patch('/:id',function(req,res){
+    controller.updateMessage(req.params.id,req.body.message)
+    .then((result)=>{
+        response.success(req,res,result,200);
+    })
+    .catch((err)=>{
+        response.error(req,res,'Error interno',500,err.message);
+    })
+})
 module.exports=router;

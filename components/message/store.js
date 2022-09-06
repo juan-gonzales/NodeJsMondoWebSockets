@@ -17,9 +17,15 @@ async function getMessages() {
     return messages;
 };
 
+async function updateText(id,message){
+    const result=await Model.findOne({_id:id});
+    result.message=message;
+    const newMessage=await result.save();
+    return newMessage;
+}
+
 module.exports = {
     add: addMessage, 
-    list: getMessages
+    list: getMessages,
+    updateText:updateText,
 };
-
-//jR7zD1znOPjRDDyy

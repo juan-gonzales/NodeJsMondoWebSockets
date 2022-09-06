@@ -17,4 +17,15 @@ function getMessages() {
         resolve(store.list());
     });
 }
-module.exports = {addMessage, getMessages};
+
+function updateMessage(id,message){
+    return new Promise(async (resolve, reject)=> {
+        if(!id || !message){
+            reject('El id y el mensaje son obligatorios');
+        }
+        const result= await store.updateText(id,message);
+        resolve(result);
+    });
+}
+
+module.exports = {addMessage, getMessages,updateMessage};
